@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cifrado Clásico Interactivo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cifrado Clásico Interactivo</h1>
+            <p>4 algoritmos históricos con explicación visual paso a paso</p>
+        </header>
+
+        <main class="grid">
+            <!-- Panel de Entrada -->
+            <section class="input-panel">
+                <form id="cipherForm">
+                    <div class="field">
+                        <label for="algorithm">Algoritmo:</label>
+                        <select id="algorithm" onchange="updateAll()">
+                            <option value="caesar">Cifrado César</option>
+                            <option value="vigenere">Cifrado Vigenère</option>
+                            <option value="transposition">Transposición Columnar</option>
+                            <option value="substitution">Sustitución Simple</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="text">Texto:</label>
+                        <textarea id="text" rows="3" placeholder="Escribe tu mensaje..." oninput="updateAll()"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="key">Clave:</label>
+                        <input type="text" id="key" placeholder="Ej: 3 | LEMON | 4 | QWERTY..." oninput="updateAll()" />
+                        <small id="keyHint">Selecciona un algoritmo</small>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" onclick="encrypt()">Cifrar</button>
+                        <button type="button" onclick="decrypt()">Descifrar</button>
+                        <button type="button" onclick="clearAll()">Limpiar</button>
+                    </div>
+                </form>
+
+                <div id="result" class="result-box">
+                    <strong>Resultado:</strong> <span id="output">(vacío)</span>
+                    <button onclick="copyToClipboard()" id="copyBtn" style="display:none;">Copiar</button>
+                </div>
+            </section>
+
+            <!-- Panel de Explicación Visual -->
+            <section class="visual-panel" id="visualPanel">
+                <h3 id="visualTitle">Selecciona un algoritmo</h3>
+                <div id="visualContent">
+                    <p style="opacity:0.7;">Ingresa texto y clave para ver la explicación paso a paso.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Desarrollado con HTML, CSS y JS | <a href="https://github.com/tunombre/CifradoClasicoWeb" target="_blank">Ver en GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
